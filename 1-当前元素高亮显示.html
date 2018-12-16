@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>当前元素高亮显示</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li id="item1">选项1</li>
+        <li id="item2">选项2</li>
+        <li id="item3">选项3</li>
+        <li id="item4">选项4</li>
+        <li id="item5">选项5</li>
+    </ul>
+
+    <script>
+        var lis = document.querySelectorAll('li')
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onclick = function (e) {
+                e.currentTarget.classList.add('red')
+                var otherSiblings = getSiblings(e.currentTarget)
+                for (var key in otherSiblings) {
+                    otherSiblings[key].classList = ''
+                }
+            }
+        }
+
+        // 工具函数
+        function getSiblings(node) {
+            var children = node.parentNode.children
+            var array = { length: 1 }
+            for (var i = 0; i < children.length; i++) {
+                if (children[i] !== node) {
+                    array[array.length] = children[i]
+                    array.length += 1
+                }
+            }
+            return array
+        }
+    </script>
+</body>
+
+</html>
