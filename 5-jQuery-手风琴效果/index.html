@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$('p:not(:first)').hide()
+		$('h1:first').addClass('active')
+
+		$('h1').click(function () {
+			$(this).next('p').slideToggle()
+				.siblings('p').slideUp()
+			$(this).toggleClass('active')
+				.siblings('h1').removeClass('active')
+				
+		}).hover(function () {
+			$(this).addClass('hover')
+		}, function () {
+			$(this).removeClass('hover')
+		})
+
+
+
+	})
+</script>
+<style type="text/css">
+* { padding:0; margin:0; }
+
+body { padding:100px; font:12px "宋体"; }
+
+.box { width:500px; border-bottom:1px solid #CCC; }
+
+.box h1 { height:30px; line-height:30px; padding:0 10px; font-size:12px; cursor:pointer; border:1px solid #ccc; border-bottom:none; background:#eee url(img/bg.gif) no-repeat right -27px; }
+
+.box h1.hover { background-color:#e3e2e2; }
+
+.box h1.active { background-position:right 7px; }
+
+.box p { padding:10px; border-left:1px solid #ccc; border-right:1px solid #ccc; }
+</style>
+</head>
+
+<body>
+<div class="box">
+  <h1>标题一</h1>
+  <p>内容</p>
+  <h1>标题二</h1>
+  <p>内容</p>
+  <h1>标题三</h1>
+  <p>内容</p>
+  <h1>标题四</h1>
+  <p>内容</p>
+  <h1>标题五</h1>
+  <p>内容</p>
+</div>
+</body>
+</html>
