@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$('.box img').hover(function () {
+			var div = $('<div><img src="./img/dt.jpg"><p>'+ $('.box').attr('title') +'</p></div>')
+			div.attr('id', 'two')
+			$('body').append(div)
+
+			$('#two').show('fast')
+			$('.box').removeAttr('title')
+			$('#two p').css('line-height', '30px')
+
+
+		}, function () {
+			var text = $('#two p').text()
+			$('.box').attr('title', text)
+			$('#two').remove()
+
+
+		}).mousemove(function (e) {
+			var x = e.pageX + 10
+			var y = e.pageY + 20
+			$('#two').css({
+				left: x +'px',
+				top: y +'px'
+			})
+		})
+
+
+
+	})
+</script>
+
+
+<style type="text/css">
+
+* {margin: 0; padding: 0;}
+
+body { font:12px "宋体"; padding:100px; }
+
+img { border:none;}
+
+#two { border:1px solid #ccc; background:#eee;   line-height:30px;  position:absolute; border:5px solid #ccc; display:none; text-align:center; font-size:14px; font-weight:bold;}
+
+</style>
+
+</head>
+
+<body>
+<a href="img/dt.jpg" class="box" title="后盾网教程">
+	<img src="img/xt.jpg" alt="hdw" />
+</a>
+</body>
+</html>
