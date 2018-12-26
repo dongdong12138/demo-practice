@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/hdw.css"/>
+<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script>
+	$(document).ready(function () {
+		var strong = $('<strong>*</strong>')
+		strong.addClass('reda')
+		$('.one').append(strong)
+
+		$('.a1').blur(function () {
+			$(this).parent().children('em').remove()
+			if (this.value === '') {
+				var em1 = $('<em>不得为空</em>')
+				$(this).parent().append(em1)
+			} else if (this.value.length < 6) {
+				var em2 = $('<em>不得少于6位</em>')
+				$(this).parent().append(em2)
+			} else {
+				var em3 = $('<em>正确</em>')
+				$(this).parent().append(em3)
+			}
+
+		})
+
+		$('#send').click(function () {
+			if ($('.a1').val() === '') {
+				var em = $('<em>请填写此字段</em>')
+				$('.one').append(em)
+			}
+
+			return false
+		})
+
+		$('#res').click(function () {
+			$('.one').find('em').remove()
+		})
+
+
+
+	})
+</script>
+</head>
+
+<body>
+<form method="post" action="">
+<div class="one">
+<label for="username">用户名：</label>
+<input type="text" id="username" class="a1" />
+</div>
+<div class="one">
+<label for="passwowd">密码：</label>
+<input type="password" id="password" class="a1" />
+</div>
+<div class="one">
+<label for="passwords">确认密码：</label>
+<input type="password" id="passwords" class="a1" />
+</div>
+<div class="one">
+<label for="email">邮件：</label>
+<input type="text" id="email" class="a1" />
+</div>
+<div class="one">
+<label for="tel">手机：</label>
+<input type="text" id="tel" class="a1" />
+</div>
+<div class="two">
+<input type="submit" id="send" value="提交" />
+<input type="reset" id="res" value="重置" />
+
+</div>
+
+
+
+</form>
+</body>
+</html>
