@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点击按钮创建列表</title>
+    <style>
+        div {
+            width: 300px;
+            height: 600px;
+            border: 2px dotted orangered;
+            margin: 10px;
+        }
+        .green {
+            background: green;
+        }
+        .font {
+            color: red;
+            font-size: 30px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <button>创建列表</button>
+    <div></div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    var arr = ['降龙十八掌', '六脉神剑', '葵花宝典', '辟邪剑谱']
+    $('button').on('click', function () {
+        var ul = $('<ul></ul>')
+        for (var i = 0; i < arr.length; i ++) {
+            var li = $('<li>'+ arr[i] +'</li>')
+            li.on('mouseenter', function () {
+                $(this).addClass('green')
+            }).on('mouseleave', function () {
+                $(this).removeClass('green')
+            }).on('click', function () {
+                $(this).addClass('font').siblings().removeClass('font')
+            })
+            ul.append(li)
+        }
+
+        $('div').append(ul)
+    })
+</script>
+</body>
+</html>
