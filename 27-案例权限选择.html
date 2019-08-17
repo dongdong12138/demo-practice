@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>权限选择</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        .container {
+            margin-left: 500px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        .buttonGroup {
+            width: 50px;
+            height: 100px;
+            float: left;
+            margin: 0 4px;
+        }
+        .buttonGroup>button {
+            width: 100%;
+            height: 25px;
+        }
+        
+        .left {
+            width: 60px;
+            height: 100px;
+            float: left;
+        }
+        .right {
+            width: 60px;
+            height: 100px;
+            float: left;
+        }
+        select {
+            overflow: hidden;
+        }
+        select option {
+            height: calc(100px / 5);
+            text-align: center;
+        }
+        select option:hover {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <select multiple class="left">
+            <option>添加</option>
+            <option>删除</option>
+            <option>修改</option>
+            <option>查询</option>
+            <option>打印</option>
+        </select>
+        <div class="buttonGroup">
+            <button id="btn1">></button>
+            <button id="btn2"><</button>
+            <button id="btn3">>></button>
+            <button id="btn4"><<</button>
+        </div>
+        <select multiple class="right">
+
+        </select>
+    </div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $('#btn1').on('click', function () {
+        $('.left>option:selected').appendTo($('.right'))
+    })
+
+    $('#btn2').on('click', function () {
+        $('.left').append($('.right>option:selected'))
+    })
+
+    $('#btn3').on('click', function () {
+        $('.left>option').appendTo($('.right'))
+    })
+
+    $('#btn4').on('click', function () {
+        $('.left').append($('.right>option'))
+    })
+</script>
+</body>
+</html>
