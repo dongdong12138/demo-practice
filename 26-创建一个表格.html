@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <base target="_blank">
+    <title>创建一个表格</title>
+    <style>
+        div {
+            width: 600px;
+            height: 450px;
+            border: 1px solid red;
+            margin: 10px;
+        }
+        table {
+            border: 1px solid green;
+            border-collapse: collapse;
+        }
+        table tr th,
+        table tr td {
+            border: 1px solid green;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">创建一个表格</button>
+    <button id="btn2">移除表格</button>
+    <button id="btn3">添加一行</button>
+    <div></div>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    var arr=[
+      {"name":"传智播客","href":"http://www.itcast.cn","length": 2},
+      {"name":"快播","href":"http://www.kuaibo.cn","length": 2},
+      {"name":"优酷","href":"http://www.youku.cn","length": 2},
+      {"name":"爱奇艺","href":"http://www.iqiyi.cn","length": 2},
+      {"name":"B站","href":"http://www.bili.cn","length": 2},
+      {"name":"土豆","href":"http://www.tudou.cn","length": 2}
+    ];
+
+    $('#btn1').on('click', function () {
+        var table = $('<table></table>')
+        table.append($('<tr></tr>').append($('<th>name</th><th>href</th>')))
+
+        for (var i = 0; i < arr.length; i ++) {
+            var tr = $('<tr></tr>')
+            var td = $('<td>'+ arr[i].name +'</td><td><a href="'+ arr[i].href +'">'+ arr[i].href +'</a></td>')
+            tr.append(td)
+            tr.on('mouseenter', function () {
+                $(this).css('background', 'pink')
+            }).on('mouseleave', function () {
+                $(this).css('background', '')
+            })
+            table.append(tr)
+        }
+        $('div').append(table)
+    })
+
+    $('#btn2').on('click', function () {
+        $('table').remove()
+    })
+
+    $('#btn3').on('click', function () {
+        var tr = $('<tr></tr>')
+        var td = $('<td>腾讯</td><td><a href="http://www.qq.com">http://www.qq.com</a></td>')
+        tr.on('mouseenter', function () {
+            $(this).css('background', 'pink')
+        }).on('mouseleave', function () {
+            $(this).css('background', '')
+        })
+        tr.append(td)
+        $('table').append(tr)
+    })
+</script>
+</body>
+</html>
